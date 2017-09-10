@@ -30,7 +30,7 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
     res.json({bye: 'buddy'})
 })
 
