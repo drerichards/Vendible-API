@@ -2,27 +2,39 @@ const express = require('express'),
     cors = require('cors'),
     app = express(),
     mongoose = require('mongoose'),
+    cookieSession = require('cookie-session'),
+    passport = require('passport'),
     bodyParser = require('body-parser'),
-    keys = require('./config/keys'), 
+    keys = require('./config/keys'),
     // {CLIENT_ORIGIN} = require('./config'),
     PORT = process.env.PORT || 3000
 
+require('./models/User')
+require('./services/passport')
+
+// app.use(cors({origin: CLIENT_ORIGIN}))
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://drerichards:test@ds129024.mlab.com:29024/vendible_inventory')
-console.log('connect', keys.mongoURI)
+mongoose.connect(keys.mongoURI)
 mongoose
     .connection
     .once('open', () => {
         console.log('Mongo Connection Opened!')
     })
     .on('error', () => console.warn('Warning', error))
-
 app.use(bodyParser.json())
-// app.use(cors({origin: CLIENT_ORIGIN}))
-app.get('/api/*', (req, res) => {
-    res.json({ok: true})
+
+app.use(cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.get('/*', (req, res) => {
+    res.json({bye: 'buddy'})
 })
 
+require('./routes/authRoutes')(app)
 require('./routes/inventoryRoutes')(app)
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 

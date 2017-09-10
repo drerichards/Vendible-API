@@ -1,10 +1,10 @@
-const Inventory = require('../models/inventoryModel')
+const Inventory = require('../models/Inventory')
 module.exports = app => {
     app.get('/apparel/inventory', (req, res) => {
         Inventory
             .findOne({})
-            .then(ee => {
-                res.json(ee)
+            .then(items => {
+                res.json(items)
             })
             .catch(err => {
                 console.error(err)
