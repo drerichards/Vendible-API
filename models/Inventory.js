@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-InventorySchema = new mongoose.Schema({
+    InventorySchema = new mongoose.Schema({
         image: {
             type: String,
             required: true
@@ -29,5 +29,9 @@ InventorySchema = new mongoose.Schema({
             required: true
         }
     })
-const Inventory = mongoose.model('Inventory', InventorySchema, 'homegoods')
+const Inventory = {
+    Apparel: mongoose.model('Inventory', InventorySchema, 'apparel'),
+    Electronics: mongoose.model('Inventory', InventorySchema, 'electronics'),
+    Homegoods: mongoose.model('Inventory', InventorySchema, 'homegoods')
+}
 module.exports = Inventory

@@ -6,13 +6,13 @@ const express = require('express'),
     passport = require('passport'),
     bodyParser = require('body-parser'),
     keys = require('./config/keys'),
-    // {CLIENT_ORIGIN} = require('./config'),
     PORT = process.env.PORT || 3000
 
-require('./models/User')
+require('./models/GoogleUser')
 require('./services/passport')
 
-// app.use(cors({origin: CLIENT_ORIGIN}))
+app.use(express.static('public'))
+
 mongoose.Promise = global.Promise
 mongoose.connect(keys.mongoURI)
 mongoose
@@ -31,10 +31,11 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.get('/', (req, res) => {
-    res.json({bye: 'buddy'})
+    res.redirect('/index.html')
 })
 
 require('./routes/authRoutes')(app)
+require('./routes/manualUserRoutes')(app)
 require('./routes/inventoryRoutes')(app)
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 
