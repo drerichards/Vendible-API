@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const {Schema} = mongoose
 const bcrypt = require('bcryptjs')
 
-const ManualUserSchema = new Schema({
+const LocalUserSchema = new Schema({
     first_name: {
         type: String,
         required: true,
@@ -27,7 +27,7 @@ const ManualUserSchema = new Schema({
     current_cart: [],
     past_orders: []    
 })
-ManualUserSchema.pre('save', function (next) {
+LocalUserSchema.pre('save', function (next) {
     let user = this
     if (user.isModified('password') || user.isNew) {
         bcrypt.hash(user.password, 10, (err, hash) => {
@@ -41,7 +41,7 @@ ManualUserSchema.pre('save', function (next) {
         return next()
     }
 })
-ManualUserSchema.methods.comparePassword = function (entryPassword, callback) {
+LocalUserSchema.methods.comparePassword = function (entryPassword, callback) {
     return bcrypt.compare(entryPassword, this.password, function (err, isMatch) {
         if (err) {
             return callback(err)
@@ -49,5 +49,5 @@ ManualUserSchema.methods.comparePassword = function (entryPassword, callback) {
         callback(null, isMatch)
     })
 }
-const ManualUser = mongoose.model('manual_users', ManualUserSchema, 'manual_users')
-module.exports = ManualUser
+const LocalUser = mongoose.model('local_users', LocalUserSchema, 'local_users')
+module.exports = LocalUser

@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 })
 
 require('./routes/authRoutes')(app)
-require('./routes/manualUserRoutes')(app)
+require('./routes/localUserRoutes')(app)
 require('./routes/inventoryRoutes')(app)
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 

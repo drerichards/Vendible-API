@@ -1,16 +1,18 @@
-const ManualUser = require('../models/ManualUser')
+const LocalUser = require('../models/LocalUser'),
+    bodyParser = require('body-parser'),
+    urlencodedParser = bodyParser.urlencoded({extended: false})
 
 module.exports = app => {
     app.get('/user/logout', (req, res) => {
         res.redirect('/')
     })
 
-    app.post('/user/signup', (req, res) => {
+    app.post('/user/signup', urlencodedParser, (req, res) => {
         let first_name = req.body.first_name
         let last_name = req.body.last_name
         let email = req.body.email
         let password = req.body.password
-        ManualUser.findOne({
+        LocalUser.findOne({
             'email': email
         }, (err, user) => {
             if (err) {
@@ -24,7 +26,7 @@ module.exports = app => {
                     .status(400)
                     .send('Email Address already exists in our system')
             } else {
-                let newUser = new ManualUser()
+                let newUser = new LocalUser()
                 newUser.first_name = first_name
                 newUser.last_name = last_name
                 newUser.email = email
@@ -44,12 +46,10 @@ module.exports = app => {
         })
     })
 
-    app.post('/user/login', (req, res) => {
-        newUser.first_name = first_name
-        newUser.last_name = last_name
-        newUser.email = email
-        newUser.password = password
-        ManualUser.findOne({
+    app.post('/user/login', urlencodedParser, (req, res) => {
+        let email = req.body.email
+        let password = req.body.password
+        LocalUser.findOne({
             'email': email
         }, (err, user) => {
             if (err) {

@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Endpoint Test Buttons</h1>
     <a href="/auth/google"><button>Google Login</button></a>
     <a href="/api/current_user"><button>Google User</button></a>
     <a href="/api/logout"><button>Google Logout</button></a>
     <br><br>
-    <a href="/user/signup"><button>Signup</button></a>
-    <a href="/user/login"><button>Login</button></a>
-    <a href="/user/logout"><button>Logout</button></a>
+
+    <form action="/user/signup" method="POST">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name"><br>
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name"><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email"><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password"><br>
+        <input type="submit" value="Sign Up">
+    </form>
+    <br><br>
+    <form action="/user/login" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" name="email"><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password"><br>
+        <input type="submit" value="Submit">
+        <a href="/user/logout"><button>Logout</button></a>
+    </form>
     <br><br>
     <a href="/apparel/inventory"><button>Get apparel</button></a>
     <a href="/electronics/inventory"><button>Get electronics</button></a>
     <a href="/homegoods/inventory"><button>Get homegoods</button></a>
 </body>
+
 </html>
