@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const {Schema} = mongoose
-const bcrypt = require('bcryptjs')
+const mongoose = require('mongoose'),
+ {Schema} = mongoose,
+ bcrypt = require('bcryptjs')
 
 const LocalUserSchema = new Schema({
     first_name: {

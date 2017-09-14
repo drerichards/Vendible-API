@@ -6,7 +6,7 @@ const express = require('express'),
     passport = require('passport'),
     bodyParser = require('body-parser'),
     keys = require('./config/keys'),
-    PORT = process.env.PORT || 3000
+    PORT = process.env.PORT || 5000
 
 require('./models/GoogleUser')
 require('./services/passport')

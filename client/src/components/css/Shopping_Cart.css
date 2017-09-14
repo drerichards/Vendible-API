@@ -1,0 +1,46 @@
+.cartContainer {
+    overflow: auto;
+    text-align: right;
+}
+
+.cartContainer ul {
+    padding: 0;
+}
+
+.cartContainer ul li {
+    width: 100%;
+    border-top: 1px solid;
+    padding: 3% 0;
+    margin: 2% 0;
+}
+
+.cartContainer ul li div {
+    float: right;
+    clear: both;
+}
+
+.cartContainer ul li img {
+    width: 10%;
+    float: left;
+    clear: both;
+}
+
+.cartContainer ul li h6 {
+    line-height: 1%;
+    margin: 2% 0;
+}
+
+.cartContainer ul li p {
+    margin: 0;
+}
+
+.cartContainer button {
+    float: left;
+    clear: both;
+        font-size: 12px;
+}
+
+.cartContainer div {
+    border-top: 3px solid;
+    padding: 1% 0;
+}

@@ -1,0 +1,15 @@
+.modal {
+    position: fixed;
+    width: 300px;
+    top: 25%;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow: auto;
+    padding: 20px;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+}

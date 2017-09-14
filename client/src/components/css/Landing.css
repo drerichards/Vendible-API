@@ -1,0 +1,15 @@
+.carousel-img {
+    min-height: 42vh;
+    height: 70vh;
+}
+
+.carousel-caption h1{
+    font-size: 3em;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.carousel-caption h3 {
+    font-size: 2em;
+    text-shadow: 2px 2px 4px #000000;
+    color: #C2E812;
+}

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700');
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Josefin Sans', Calibri, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #fff;
+}
+
+a:hover {
+  color: #fff;
+}
+
+a:active {
+  color: #fff;
+}
+
+ul li {
+  list-style: none;
+}
+
+.bodyContainer {
+  margin: 3% auto;
+  width: 40%;
+}
+
+.bodyContainer h1 {
+  text-align: center;
+  font-size: 1.75em;
+  margin: 5% 0 3%;
+}

@@ -1,0 +1,31 @@
+.nav-position {
+    position: static;
+}
+
+.navigation {
+    background-color: #628395;
+    padding: 0.5% 10%;
+    width: 100%;
+}
+
+.navigation li {
+    margin: 0 10%;
+}
+
+.navbar-brand {
+    color: #C2E812;
+    text-shadow: 1px 1px 2px #616161;
+}
+
+#navlink li a {
+    color: #fff;
+}
+
+#navlink li a:hover {
+    color: #C2E812;
+}
+
+.shopcart{
+    margin: 0 1%;
+    color: #fff;
+}
