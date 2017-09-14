@@ -11,7 +11,7 @@ const express = require('express'),
 require('./models/GoogleUser')
 require('./services/passport')
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
 mongoose.Promise = global.Promise
 mongoose.connect(keys.mongoURI)
