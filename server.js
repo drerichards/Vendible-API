@@ -11,8 +11,6 @@ const express = require('express'),
 require('./models/GoogleUser')
 require('./services/passport')
 
-// app.use(express.static('public'))
-
 mongoose.Promise = global.Promise
 mongoose.connect(keys.mongoURI)
 mongoose.connection.once('open', () => {
@@ -26,10 +24,6 @@ app.use(cookieSession({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-
-app.get('/', (req, res) => {
-    res.redirect('/')
-})
 
 require('./routes/authRoutes')(app)
 require('./routes/localUserRoutes')(app)
