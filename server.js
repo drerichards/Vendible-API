@@ -31,7 +31,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.get('/', (req, res) => {
-    res.redirect('/index.html')
+    res.redirect('/')
 })
 
 require('./routes/authRoutes')(app)
