@@ -15,12 +15,9 @@ require('./services/passport')
 
 mongoose.Promise = global.Promise
 mongoose.connect(keys.mongoURI)
-mongoose
-    .connection
-    .once('open', () => {
+mongoose.connection.once('open', () => {
         console.log('Mongo Connection Opened!')
-    })
-    .on('error', () => console.warn('Warning', error))
+    }).on('error', () => console.warn('Warning', error))
 app.use(bodyParser.json())
 
 app.use(cookieSession({
@@ -30,9 +27,9 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
-// app.get('/', (req, res) => {
-//     res.redirect('/')
-// })
+app.get('/', (req, res) => {
+    res.redirect('/')
+})
 
 require('./routes/authRoutes')(app)
 require('./routes/localUserRoutes')(app)
