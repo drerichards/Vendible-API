@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
-// import {connect} from 'react-redux'
-// import * as actions from '../actions'
+import {connect} from 'react-redux'
+import * as actions from '../actions'
 
 import NavBar from './NavBar'
 import Landing from './Landing'
@@ -13,6 +13,9 @@ import LoginModal from './Login_Modal'
 import ProductModal from './Product_Modal'
 
 class App extends Component {
+    componentDidMount() {
+        this.props.fetchUser()
+    }
     render() {
         return (
             <div>
@@ -20,16 +23,16 @@ class App extends Component {
                     <div>
                         <NavBar/>
                         <Route exact path='/' component={Landing}/>
-                        <Route exact path='/user/signup' component={AccountSignup}/>
-                        <Route exact path='/user/login' component={LoginModal}/>
-                        <Route exact path='/departments' component={Departments}/>
-                        <Route exact path='/product_display' component={ProductDisplay}/>
-                        <Route exact path='/product_display/detail' component={ProductModal}/>
-                        <Route exact path='/shopping_cart' component={ShoppingCart}/>
+                        <Route path='/signup' component={AccountSignup}/>
+                        <Route path='/login' component={LoginModal}/>
+                        <Route path='/departments' component={Departments}/>
+                        <Route path='/product_display' component={ProductDisplay}/>
+                        <Route path='/product_display/detail' component={ProductModal}/>
+                        <Route path='/shopping_cart' component={ShoppingCart}/>
                     </div>
                 </BrowserRouter>
             </div>
         )
     }
 }
-export default App
+export default connect(null, actions)(App)

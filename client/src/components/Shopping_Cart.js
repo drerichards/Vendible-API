@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Payment from './Payment'
 import './css/Shopping_Cart.css'
 
 export default class ShoppingCart extends Component {
@@ -20,10 +21,11 @@ export default class ShoppingCart extends Component {
             <p>${item.price}</p>
         </li>)
         let items = []
-        var total
+        let total
         for(let i=0; i < cartItems.length; i++){
             items.push(cartItems[i].price)
             total = items.reduce((a, b) => a + b)
+            total = total.toFixed(2)
         }
         
         return (
@@ -33,8 +35,8 @@ export default class ShoppingCart extends Component {
                     {cartDisplay}
                 </ul>
                 <div>
-                    <button>Checkout</button>
-                    <h5>Subtotal: ${total.toFixed(2)}</h5>
+                    <Payment total={total}/>
+                    <h5>Subtotal: ${total}</h5>
                 </div>
             </div>
         )

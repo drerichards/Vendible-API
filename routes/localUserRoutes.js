@@ -1,12 +1,8 @@
 const LocalUser = require('../models/LocalUser'),
     bodyParser = require('body-parser'),
-    urlencodedParser = bodyParser.urlencoded({extended: false})
+    urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 module.exports = app => {
-    app.get('/user/logout', (req, res) => {
-        res.redirect('/')
-    })
-
     app.post('/user/signup', urlencodedParser, (req, res) => {
         let first_name = req.body.first_name
         let last_name = req.body.last_name
@@ -17,14 +13,10 @@ module.exports = app => {
         }, (err, user) => {
             if (err) {
                 throw err
-                res
-                    .status(500)
-                    .send('Internal Server Error')
+                res.status(500).send('Internal Server Error')
             }
             if (user) {
-                res
-                    .status(400)
-                    .send('Email Address already exists in our system')
+                res.status(400).send('Email Address already exists in our system')
             } else {
                 let newUser = new LocalUser()
                 newUser.first_name = first_name
@@ -34,14 +26,11 @@ module.exports = app => {
                 newUser.save((err) => {
                     if (err) {
                         throw err
-                        res
-                            .status(500)
-                            .send('Internal Server Error')
-                    } else 
-                        res
-                            .status(200)
-                            .send(newUser)
-                    })
+                        res.status(500).send('Internal Server Error')
+                    } else
+                        res.status(200)
+                        res.redirect('/')                        
+                })
             }
         })
     })
@@ -54,27 +43,20 @@ module.exports = app => {
         }, (err, user) => {
             if (err) {
                 throw err
-                res
-                    .status(500)
-                    .send('Internal Server Error')
+                res.status(500).send('Internal Server Error')
             }
             if (!user) {
-                res
-                    .status(400)
-                    .send('User Account Not Found')
+                res.status(400).send('User Account Not Found')
             } else {
                 user.comparePassword(password, (err, isMatch) => {
-                    if (err) 
+                    if (err)
                         res.status(500).send('Internal Server Error')
                     if (!isMatch) {
-                        res
-                            .status(401)
-                            .send('Invalid Password')
+                        res.status(401).send('Invalid Password')
                     }
                     if (isMatch) {
-                        res
-                            .status(200)
-                            .send(user)
+                        res.status(200)
+                        res.redirect('/')
                     }
                 })
             }

@@ -26,6 +26,10 @@
 }
 
 .shopcart{
-    margin: 0 1%;
-    color: #fff;
+    margin: 0 10%;
+    display: inline-block;
+}
+
+.right{
+    width: 35%;
 }

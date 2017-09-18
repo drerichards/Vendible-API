@@ -8,6 +8,5 @@ import reducers from './reducers'
 
 import './components/css/index.css'
 
-const store = createStore(reducers, {})
-ReactDOM.render(
-    <Provider store={store}><App/></Provider>, document.querySelector('#root'))
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
+ReactDOM.render(<Provider store={store}><App/></Provider>, document.querySelector('#root'))

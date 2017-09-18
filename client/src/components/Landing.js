@@ -2,6 +2,9 @@ import React from 'react'
 import './css/Landing.css'
 // import LoginModal from './Login_Modal'
 // import Modal from './Modal'
+import clothes from '../images/clothes.jpeg'
+import elec from '../images/elec.jpeg'
+import home from '../images/home.jpg'
 
 const Landing = () => {
     return (
@@ -23,10 +26,7 @@ const Landing = () => {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
-                                    <img
-                                        className="d-block w-100 carousel-img"
-                                        src="https://images.pexels.com/photos/296881/pexels-photo-296881.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
-                                        alt="Clothing"/>
+                                    <img className="d-block w-100 carousel-img" src={clothes} alt="Clothing" />
                                     <div className="carousel-caption d-none d-md-block">
                                         <h1>All the best brands</h1>
                                         <h3>All in one place!</h3>
@@ -36,16 +36,24 @@ const Landing = () => {
                                     </div>
                                 </div>
                                 <div className="carousel-item">
-                                    <img
-                                        className="d-block w-100 carousel-img"
-                                        src="https://images.pexels.com/photos/196659/pexels-photo-196659.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
-                                        alt="Electronics"/>
+                                    <img className="d-block w-100 carousel-img" src={elec} alt="Electronics" />
+                                    <div className="carousel-caption d-none d-md-block">
+                                        <h1>More stores. More value.</h1>
+                                        <h3>More of what you want!</h3>
+                                        <button type="button" className="btn btn-primary">
+                                            <a href="/departments">Shop Now!</a>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div className="carousel-item">
-                                    <img
-                                        className="d-block w-100 carousel-img"
-                                        src="https://images.pexels.com/photos/2459/stairs-home-loft-lifestyle.jpg?w=1260&h=750&auto=compress&cs=tinysrgb"
-                                        alt="Furniture"/>
+                                    <img className="d-block w-100 carousel-img" src={home} alt="Furniture" />
+                                    <div className="carousel-caption d-none d-md-block">
+                                        <h1>Whatever you’ve got in mind</h1>
+                                        <h3>We’ve got inside!</h3>
+                                        <button type="button" className="btn btn-primary">
+                                            <a href="/departments">Shop Now!</a>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <a

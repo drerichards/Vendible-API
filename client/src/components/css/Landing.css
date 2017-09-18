@@ -1,15 +1,19 @@
-.carousel-img {
-    min-height: 42vh;
-    height: 70vh;
+.carousel-caption {
+    padding-bottom: 135px;
+    width: 100%;
+    right: 0;
+    left: 0;
 }
-
 .carousel-caption h1{
-    font-size: 3em;
-    text-shadow: 2px 2px 4px #000000;
+    font-size: 3.5em;
+    padding-top: 1.5%;
+    text-shadow: 3px 1px 7px #000000;
+    background-color: rgba(165, 196, 212, 0.5);
 }
 
 .carousel-caption h3 {
-    font-size: 2em;
+    font-size: 2.75em;
     text-shadow: 2px 2px 4px #000000;
-    color: #C2E812;
+    color: rgb(213, 255, 19);
+    margin: 1% 0;
 }
