@@ -11,6 +11,9 @@
     },
       "/user/*": {
         "target": "http://localhost:5000"
+      },
+      "/inventory/*": {
+        "target": "http://localhost:5000"
       }
   },
   "dependencies": {

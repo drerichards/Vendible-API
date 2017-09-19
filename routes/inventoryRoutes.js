@@ -1,6 +1,6 @@
 const {Apparel, Electronics, Homegoods} = require('../models/Inventory')
 module.exports = app => {
-    app.get('/apparel/inventory', (req, res) => {
+    app.get('/inventory/apparel', (req, res) => {
         Apparel
             .findOne({})
             .then(items => {
@@ -13,7 +13,7 @@ module.exports = app => {
                     .json({message: 'Internal server error'})
             })
     }),
-    app.get('/electronics/inventory', (req, res) => {
+    app.get('/inventory/electronics', (req, res) => {
         Electronics
             .findOne({})
             .then(items => {
@@ -26,7 +26,7 @@ module.exports = app => {
                     .json({message: 'Internal server error'})
             })
     }),
-    app.get('/homegoods/inventory', (req, res) => {
+    app.get('/inventory/homegoods', (req, res) => {
         Homegoods
             .findOne({})
             .then(items => {

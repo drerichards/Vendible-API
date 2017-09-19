@@ -1,20 +1,31 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {fetchProducts} from '../actions/index'
+import { Link } from 'react-router-dom'
 import './css/Departments.css'
 
-export default class Departments extends Component {
+class Departments extends Component {
     render() {
-        const deptNames = ['Apparel', 'Electronics', 'Homegoods']
-        const depts = deptNames.map((dept, index) => <a href="/product_display">
-            <li key={index}>{dept}</li>
-        </a>)
+        const depts = this.props.departments.map((dept, index) => 
+            <li key={index} onClick={() => this.props.fetchProducts(dept)}>{dept}</li>)
 
         return (
             <div className="container bodyContainer deptContainer">
                 <h1>Departments</h1>
                 <ul>
-                    {depts}
+                    <Link to='/product_display'>{depts}</Link>
                 </ul>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {departments: state.departments}
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({fetchProducts}, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Departments)

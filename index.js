@@ -16,8 +16,8 @@ mongoose.connect(keys.mongoURI)
 mongoose.connection.once('open', () => {
         console.log('Mongo Connection Opened!')
     }).on('error', () => console.warn('Warning', error))
-app.use(bodyParser.json())
 
+app.use(bodyParser.json())
 app.use(cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey]
@@ -28,6 +28,7 @@ app.use(passport.session())
 require('./routes/authRoutes')(app)
 require('./routes/localUserRoutes')(app)
 require('./routes/inventoryRoutes')(app)
+require('./routes/billingRoutes')(app)
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 
 module.exports = {

@@ -7,7 +7,7 @@ chai.use(chaiHttp)
 
 describe('Apparel Path', () => {
     it('should GET Apparel Inventory', (done) => {
-         chai.request(app).get('/apparel/inventory').then((res) => {
+         chai.request(app).get('/inventory/apparel').then((res) => {
                 res.should.have.status(200)
                 res.should.be.json
                 res.body.should.be.an('object')
@@ -20,7 +20,7 @@ describe('Apparel Path', () => {
 
 describe('Electronics Path', () => {
     it('should GET Electronics Inventory', (done) => {
-         chai.request(app).get('/electronics/inventory').then((res) => {
+         chai.request(app).get('/inventory/electronics').then((res) => {
               res.should.have.status(200)
                 res.should.be.json
                 res.body.should.be.an('object')
@@ -33,7 +33,7 @@ describe('Electronics Path', () => {
 
 describe('Homegoods Path', () => {
     it('should GET Homegoods Inventory', (done) => {
-         chai.request(app).get('/homegoods/inventory').then((res) => {
+         chai.request(app).get('/inventory/homegoods').then((res) => {
               res.should.have.status(200)
                 res.should.be.json
                 res.body.should.be.an('object')
