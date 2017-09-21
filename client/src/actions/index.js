@@ -11,11 +11,11 @@ export const fetchUser = () => async dispatch => {
 export const fetchProducts = (dept) => async dispatch => {
     const route = `/inventory/${dept.toLowerCase()}`
     const res = await axios.get(route)
-    dispatch({ type: FETCH_PRODUCTS, payload: res.data.inventory })
+    dispatch({ type: FETCH_PRODUCTS, payload: res.data })
 }
 
 export const fetchProductsSuccess = (products) => {
-    return { type: FETCH_PRODUCTS, products }
+    return { type: FETCH_PRODUCTS }
 }
 
 export const handleToken = (token) => async dispatch => {

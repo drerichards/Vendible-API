@@ -1,25 +1,35 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { fetchProductsSuccess } from '../actions/index'
 import './css/Product_Display.css'
 
 class ProductDisplay extends Component {
-    //    <img src={item.image} alt="shirt" />
-    // <h4>{item.title}</h4>
-    // <p>${item.price}</p>
     render() {
-        // console.log(Object.keys(this.props.inventory))
-        const inventory = this.props.inventory
-        console.log(inventory)
-        // console.log(Object.values(inventory))        
-        const productDisplay = inventory.map((item, index) => <li key={index}>{item}</li>)
+        const elemArr = []
+        let list
+        if (this.props.inventory[0] !== undefined) {
+            const inventory = this.props.inventory[0].forEach((el) => {
+                el.inventory.forEach((el) => {
+                    elemArr.push(el)
+                })
+            })
+
+            list = elemArr.map((item, i) => {
+                console.log(item)
+                return (<li key={i}>
+                    <img src={item.image} />
+                    <h6>{item.title}</h6>
+                    <p>${item.price}</p>
+                </li>)
+            })
+        }
+
 
         return (
             <div className="container prodContainer">
                 <h1>Results</h1>
                 <section className="prodDisplay">
                     <ul>
+                        {list}
                     </ul>
                 </section>
             </div>
@@ -27,11 +37,5 @@ class ProductDisplay extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { inventory: state.inventory }
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchProductsSuccess }, dispatch)
-}
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDisplay)
+const mapStateToProps = state => ({ inventory: state.inventory })
+export default connect(mapStateToProps)(ProductDisplay)

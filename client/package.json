@@ -9,12 +9,12 @@
     "/api/*": {
       "target": "http://localhost:5000"
     },
-      "/user/*": {
-        "target": "http://localhost:5000"
-      },
-      "/inventory/*": {
-        "target": "http://localhost:5000"
-      }
+    "/user/*": {
+      "target": "http://localhost:5000"
+    },
+    "/inventory/*": {
+      "target": "http://localhost:5000"
+    }
   },
   "dependencies": {
     "axios": "^0.16.2",
