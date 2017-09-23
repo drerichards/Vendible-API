@@ -5,10 +5,17 @@ import icon from '../images/shopping-icon.png'
 
 class NavBar extends Component {
     renderContent() {
-        switch (this.props.auth) {
+        switch (!this.props.auth) {
             case null:
                 return
             case false:
+                return <div>
+                    <a className="shopcart" href="/shopping_cart">
+                        <img src={icon} alt="cart" /> 0 item(s)</a>
+                    <button type="button" className="btn btn-secondary">
+                        <a href="/api/logout">Logout</a></button>
+                </div>
+            default:
                 return <div className="btn-group" role="group">
                     <button type="button" className="btn btn-secondary">
                         <a href="/signup">Sign Up</a></button>
@@ -16,13 +23,6 @@ class NavBar extends Component {
                         <a href="/login">Login</a></button>
                     <button type="button" className="btn btn-primary">
                         <a href="/auth/google">Google Sign In</a></button>
-                </div>
-            default:
-                return <div>
-                    <a className="shopcart" href="/shopping_cart">
-                        <img src={icon} alt="cart" /> 0 item(s)</a>
-                    <button type="button" className="btn btn-secondary">
-                        <a href="/api/logout">Logout</a></button>
                 </div>
         }
     }
@@ -59,8 +59,5 @@ class NavBar extends Component {
     }
 }
 
-function mapStateToProps({ auth }) {
-    return { auth }
-}
-
+const mapStateToProps = ({auth}) => {return { auth }}
 export default connect(mapStateToProps)(NavBar)

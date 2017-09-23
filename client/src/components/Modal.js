@@ -1,33 +1,34 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './css/Modal.css'
+import { connect } from 'react-redux'
+import { hideModal } from '../actions/index'
 
-export default class Modal extends Component {
+class Modal extends Component {
     componentDidMount() {
         this.modalTarget = document.createElement('div')
-        this.modalTarget.className = 'modal'
-        document
-            .body
-            .appendChild(this.modalTarget)
-        this._render()
+        document.body.appendChild(this.modalTarget)
     }
 
-    componentWIllMount() {
-        this._render()
-    }
-
-    componentWIllUnmount() {
+    componentWillUnmount() {
         ReactDOM.unmountComponentAtNode(this.modalTarget)
         document.body.removeChild(this.modalTarget)
     }
 
-    _render() {
-        ReactDOM.render(
-            <div>{this.props.children}</div>, this.modalTarget)
-    }
     render() {
         return (
-          <noscript></noscript>
+            <div className='modal' style={{ 'display': (this.props.modal) ? "block" : "none" }}>
+                <h1>Modal</h1>
+                <a className="close" onClick={() => { this.props.dispatch(hideModal()) }}></a>
+            </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        modal: state.modal
+    }
+}
+
+export default connect(mapStateToProps)(Modal)

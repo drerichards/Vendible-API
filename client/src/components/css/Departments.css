@@ -1,11 +1,19 @@
+.deptContainer{
+        margin: 3% auto;
+        width: 70%;
+        text-align: center;        
+}
+
 .deptContainer li {
         background-color: #96897B;
         padding: 2%;
         font-size: 1.25em;
         margin: 4%;
         color: #fff;
-       cursor: pointer;
-       text-shadow: 1px 1px 2px #616161;
+        cursor: pointer;
+        text-shadow: 1px 1px 2px #616161;
+        margin: 2%;
+        display: inline-block;
     }
 
     .deptContainer li:nth-child(1) {
@@ -23,3 +31,28 @@
     .deptContainer li:hover {
         background-color: #C2E812;
     }
+
+    .cardImg{
+        width: 70%;
+        margin: 15% auto;
+    }
+
+    .card{
+        transition: all .2s ease-in-out;
+          animation-name: fadeInUp;
+    }
+    .card:hover{
+        transform: scale(1.025);
+    }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+

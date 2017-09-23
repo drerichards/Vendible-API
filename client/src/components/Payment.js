@@ -16,7 +16,7 @@ class Payment extends Component {
                 token={token => this.props.handleToken(token, cartTotal)}
                 stripeKey={process.env.REACT_APP_STRIPE_KEY}>
                 <button className="btn btn-info">Checkout</button>
-                </StripeCheckout>
+            </StripeCheckout>
         )
     }
 }

@@ -1,3 +1,4 @@
 export const FETCH_USER = 'fetch_user'
 export const FETCH_PRODUCTS = 'fetch_products'
-export const HANDLE_TOKEN = 'handle_token'
+export const SHOW_MODAL = 'show_modal'
+export const HIDE_MODAL = 'hide_modal'
