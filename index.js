@@ -12,10 +12,10 @@ require('./models/GoogleUser')
 require('./services/passport')
 
 mongoose.Promise = global.Promise
-mongoose.connect(keys.mongoURI)
+mongoose.connect(keys.mongoURI, {useMongoClient: true})
 mongoose.connection.once('open', () => {
         console.log('Mongo Connection Opened!')
-    }).on('error', () => console.warn('Warning', error))
+    }).on('error', (error) => console.warn('Warning', error))
 
 app.use(bodyParser.json())
 app.use(cookieSession({
@@ -31,6 +31,4 @@ require('./routes/inventoryRoutes')(app)
 require('./routes/billingRoutes')(app)
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 
-module.exports = {
-    app
-}
+module.exports = {app}

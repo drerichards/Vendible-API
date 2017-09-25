@@ -15,10 +15,16 @@ export const fetchProducts = (dept) => async dispatch => {
     dispatch({ type: FETCH_PRODUCTS, payload: res.data })
 }
 
-export const showModal = () => {
-    return {type: SHOW_MODAL}
+export const showModal = (displayInfo) => {
+    const displayArr = [
+        displayInfo[0].currentSrc, 
+        displayInfo[1].innerHTML, 
+        displayInfo[2].innerText, 
+        displayInfo[3].innerHTML
+    ]
+    return { type: SHOW_MODAL, payload: displayArr }
 }
 
 export const hideModal = () => {
-    return {type: HIDE_MODAL}
+    return { type: HIDE_MODAL }
 }

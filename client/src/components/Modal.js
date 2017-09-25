@@ -16,19 +16,30 @@ class Modal extends Component {
     }
 
     render() {
+        const item = this.props.modalInfo[0]
+        let title, img, details, price
+        if(item !== undefined){
+            title = <h3>{item[1]}</h3>
+            img = <img src={item[0]} alt={item[1]} />
+            details = <p><strong>Item Details:</strong> {item[3]}</p>
+            price = <h5>{item[2]}</h5>
+        }
+
         return (
-            <div className='modal' style={{ 'display': (this.props.modal) ? "block" : "none" }}>
-                <h1>Modal</h1>
-                <a className="close" onClick={() => { this.props.dispatch(hideModal()) }}></a>
+            <div className='modal' style={{ 'display': (this.props.modal) ? 'block' : 'none' }}>
+                <div className='close' onClick={() => { this.props.dispatch(hideModal()) }}></div>
+                {title}{img}{details}{price}
+                <button className='btn btn-success'>Add to Bag</button>
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return {
-        modal: state.modal
-    }
+        return {
+            modal: state.modal[0],
+            modalInfo: [state.modal[1]]
+        }
 }
-
 export default connect(mapStateToProps)(Modal)
+    

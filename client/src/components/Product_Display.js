@@ -6,8 +6,9 @@ import './css/Product_Display.css'
 
 class ProductDisplay extends Component {
     clickProduct(e) {
-        e.preventDefault()
-        this.props.dispatch(showModal())
+        const targetInfo = e.currentTarget.childNodes
+        this.props.dispatch(showModal(targetInfo))
+        // console.log(targetInfo)
     }
 
     closeModal(e) {
@@ -30,6 +31,7 @@ class ProductDisplay extends Component {
                     <img src={item.image} alt={item.title} />
                     <h6>{item.title}</h6>
                     <p>${item.price.toFixed(2)}</p>
+                    <noscript>{item.description}</noscript>
                 </li>)
             })
         }
