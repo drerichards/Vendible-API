@@ -2,15 +2,16 @@
     position: fixed;
     width: 35%;
     top: 15%;
-    bottom: 15%;
+    bottom: 10%;
     left: 0;
     right: 0;
     margin: auto;
     overflow: auto;
-    padding: 7% 1%;
-    z-index: 1;
+    padding: 6% 1%;
+    z-index: 200;
     background-color: #fff;
     box-shadow: 1px 1px 55px #888888;
+    overflow: hidden;
 }
 
 .close {
@@ -42,4 +43,17 @@
 
 .close:after {
   transform: rotate(-45deg);
+}
+
+.modalTitle{
+   margin: 0 0 5%;
+   color: #C2E812;
+   text-shadow: 1px 1px #838383;
+   padding: 2% 0;
+   font-size: 2.5em;
+   background-color: #CC8B86;
+}
+
+.form-group{
+  text-align: left;
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { showModal } from '../actions/index'
+import Modal from './Modal'
 import './css/NavBar.css'
 import icon from '../images/shopping-icon.png'
 
@@ -11,20 +13,32 @@ class NavBar extends Component {
             case false:
                 return <div>
                     <a className="shopcart" href="/shopping_cart">
-                        <img src={icon} alt="cart" /> 0 item(s)</a>
+                        <img src={icon} alt="cart" /> {this.props.cart.length} items</a>
                     <button type="button" className="btn btn-secondary">
                         <a href="/api/logout">Logout</a></button>
                 </div>
             default:
                 return <div className="btn-group" role="group">
+                    <form action="/user/login" method="POST">
+                        <input type="email" name="email" placeholder="Email:" />
+                        <input type="password" name="password" placeholder="Password:" />
+                        <input type="submit" value="Login" className="btn btn-secondary" />
+                    </form>
                     <button type="button" className="btn btn-secondary">
-                        <a href="/signup">Sign Up</a></button>
-                    <button type="button" className="btn btn-secondary">
-                        <a href="/login">Login</a></button>
+                        <div onClick={this.clickSignUp.bind(this)}>Sign Up</div></button>
                     <button type="button" className="btn btn-primary">
                         <a href="/auth/google">Google Sign In</a></button>
                 </div>
         }
+    }
+
+    clickSignUp(e) {
+        this.props.dispatch(showModal())
+    }
+
+    closeModal(e) {
+        e.preventDefault()
+        this.setState({ showModal: !this.state.showModal })
     }
 
     render() {
@@ -52,12 +66,12 @@ class NavBar extends Component {
                             <li className="nav-item"><a className="nav-link" href="/">Contact</a></li>
                         </ul>
                         <div className="right">{this.renderContent()}</div>
+                        <Modal />
                     </div>
                 </nav>
             </div>
         )
     }
 }
-
-const mapStateToProps = ({auth}) => {return { auth }}
+const mapStateToProps = state => ({ auth: state.auth, cart: state.cart})
 export default connect(mapStateToProps)(NavBar)

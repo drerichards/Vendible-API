@@ -1,29 +1,23 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import Payment from './Payment'
 import './css/Shopping_Cart.css'
+import icon from '../images/remove.png'
 
-export default class ShoppingCart extends Component {
+class ShoppingCart extends Component {
     render() {
-        const cartItems = [
-            {
-                image: 'http://www.iconsdb.com/icons/preview/barbie-pink/t-shirt-xxl.png',
-                title: 'Pink Shirt',
-                price: 12.99
-            }, {
-                image: 'http://www.iconsdb.com/icons/preview/caribbean-blue/t-shirt-xxl.png',
-                title: 'Blue Shirt',
-                price: 6.99
-            }
-        ]
+        const cartItems = this.props.cart
         const cartDisplay = cartItems.map((item, index) => <li key={index}>
-            <img src={item.image} alt="shirt"/>
-            <h6>{item.title}</h6>
-            <p>${item.price}</p>
+            <img className="cartPic" src={item[0]} alt={item[1]}/>
+            <h6><strong>{item[1]}</strong></h6>
+            <p>${item[2].substr(1)}</p>
+            <span className="removeItem">
+                <button className="btn btn-warning"><img src={icon} alt="Remove Item" /> Remove</button></span>
         </li>)
         let items = []
         let total
         for(let i=0; i < cartItems.length; i++){
-            items.push(cartItems[i].price)
+            items.push(parseInt(cartItems[i][2].substr(1)), 10)
             total = items.reduce((a, b) => a + b)
             total = total.toFixed(2)
         }
@@ -42,3 +36,5 @@ export default class ShoppingCart extends Component {
         )
     }
 }
+const mapStateToProps = state => ({cart: state.cart })
+export default connect(mapStateToProps)(ShoppingCart)

@@ -8,7 +8,6 @@ class ProductDisplay extends Component {
     clickProduct(e) {
         const targetInfo = e.currentTarget.childNodes
         this.props.dispatch(showModal(targetInfo))
-        // console.log(targetInfo)
     }
 
     closeModal(e) {

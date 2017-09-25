@@ -26,10 +26,15 @@
 }
 
 .shopcart{
-    margin: 0 10%;
+    margin: 0 5%;
     display: inline-block;
 }
 
 .right{
-    width: 35%;
+    width: 45%;
+    text-align: right;
+}
+
+input {
+    display: inline;
 }
