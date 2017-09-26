@@ -4,6 +4,7 @@ import { FETCH_PRODUCTS } from './types'
 import { SHOW_MODAL } from './types'
 import { HIDE_MODAL } from './types'
 import { ADD_TO_CART } from './types'
+import { REMOVE_FROM_CART } from './types'
 
 export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user')
@@ -34,4 +35,8 @@ export const hideModal = () => {
 
 export const addToCart = (item) => {
     return { type: ADD_TO_CART, payload: item }
+}
+
+export const removeFromCart = (index) => {
+    return { type: REMOVE_FROM_CART, payload: index }
 }

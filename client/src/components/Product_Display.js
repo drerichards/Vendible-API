@@ -31,6 +31,7 @@ class ProductDisplay extends Component {
                     <h6>{item.title}</h6>
                     <p>${item.price.toFixed(2)}</p>
                     <noscript>{item.description}</noscript>
+                    <noscript>{i}</noscript>
                 </li>)
             })
         }

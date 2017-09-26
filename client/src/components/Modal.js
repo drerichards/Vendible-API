@@ -21,31 +21,6 @@ class Modal extends Component {
 
     render() {
         let output
-        if (!this.props.modalInfo[0]) {
-            output =
-                <div style={{ 'textAlign': 'center' }}>
-                <h1 className='modalTitle' style={{ 'margin': '0 0 5%', 'fontSize': '2.5em' }}>Sign Up for Vendible:</h1>
-                    <form action="/user/signup" method="POST" className="signupContainer">
-                        <div className="form-group">
-                            <label htmlFor="first_name">First Name</label>
-                            <input type="text" className="form-control" name="first_name" required />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="last_name">Last Name</label>
-                            <input type="text" className="form-control" name="last_name" required />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email address</label>
-                            <input type="email" className="form-control" name="email" aria-describedby="emailHelp" required />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" className="form-control" name="password" required />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-        } else {
             const item = this.props.modalInfo[0]
             if (item !== undefined) {
                  output = 
@@ -56,7 +31,6 @@ class Modal extends Component {
                         <h5>{item[2]}</h5>
                         <button className='btn btn-success' onClick={this.clickAddItem.bind(this)}>Add to Bag</button>
                     </div>
-            }
         }
         return (
             <div className='modal' style={{ 'display': (this.props.modal) ? 'block' : 'none' }}>

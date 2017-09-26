@@ -12,22 +12,16 @@ class NavBar extends Component {
                 return
             case false:
                 return <div>
-                    <a className="shopcart" href="/shopping_cart">
-                        <img src={icon} alt="cart" /> {this.props.cart.length} items</a>
-                    <button type="button" className="btn btn-secondary">
-                        <a href="/api/logout">Logout</a></button>
+                    <a className='shopcart' href='/shopping_cart'>
+                        <img src={icon} alt='cart' /> {this.props.cart.length} item(s)</a>
+                        <p className='userName'>Hello {this.props.auth.first_name}!</p>
+                    <button type='button' className='btn btn-secondary'>
+                        <a href='/api/logout'>Logout</a></button>
                 </div>
             default:
-                return <div className="btn-group" role="group">
-                    <form action="/user/login" method="POST">
-                        <input type="email" name="email" placeholder="Email:" />
-                        <input type="password" name="password" placeholder="Password:" />
-                        <input type="submit" value="Login" className="btn btn-secondary" />
-                    </form>
-                    <button type="button" className="btn btn-secondary">
-                        <div onClick={this.clickSignUp.bind(this)}>Sign Up</div></button>
-                    <button type="button" className="btn btn-primary">
-                        <a href="/auth/google">Google Sign In</a></button>
+                return <div>
+                    <button type='button' className='btn btn-primary'>
+                        <a href='/auth/google'>Google Sign In</a></button>
                 </div>
         }
     }
@@ -42,30 +36,31 @@ class NavBar extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
-            <div className="nav-position">
-                <nav className="navbar navbar-expand-lg navbar-light navigation">
-                    <a className="navbar-brand" style={{ color: '#C2E812' }} href="/">Vendible</a>
+            <div className='nav-position'>
+                <nav className='navbar navbar-expand-lg navbar-light navigation'>
+                    <a className='navbar-brand' style={{ color: '#C2E812' }} href='/'>Vendible</a>
                     <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                        className='navbar-toggler'
+                        type='button'
+                        data-toggle='collapse'
+                        data-target='#navbarSupportedContent'
+                        aria-controls='navbarSupportedContent'
+                        aria-expanded='false'
+                        aria-label='Toggle navigation'>
+                        <span className='navbar-toggler-icon'></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul id="navlink" className="navbar-nav mr-auto">
-                            <li className="nav-item active">
-                                <a className="nav-link" href="/">Home<span className="sr-only">(current)</span></a></li>
-                            <li className="nav-item"><a className="nav-link" href="/">About</a></li>
-                            <li className="nav-item"><a className="nav-link" href="/departments">Shop</a></li>
-                            <li className="nav-item"><a className="nav-link" href="/">Contact</a></li>
+                    <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+                        <ul id='navlink' className='navbar-nav mr-auto'>
+                            <li className='nav-item active'>
+                                <a className='nav-link' href='/'>Home<span className='sr-only'>(current)</span></a></li>
+                            <li className='nav-item'><a className='nav-link' href='/'>About</a></li>
+                            <li className='nav-item'><a className='nav-link' href='/departments'>Shop</a></li>
+                            <li className='nav-item'><a className='nav-link' href='/'>Contact</a></li>
                         </ul>
-                        <div className="right">{this.renderContent()}</div>
+                        <div className='right'>{this.renderContent()}</div>
                         <Modal />
                     </div>
                 </nav>

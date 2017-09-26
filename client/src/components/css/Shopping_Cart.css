@@ -1,6 +1,7 @@
 .cartContainer {
     overflow: auto;
     text-align: right;
+    min-width: 600px;
 }
 
 .cartContainer h1{
@@ -20,8 +21,8 @@
 .cartContainer ul li {
     width: 100%;
     border-top: 1px solid;
-    padding: 3% 0;
-    height: 33%;
+    padding: 2% 0;
+    height: 30%;
 }
 
 .cartContainer ul li div {
@@ -32,7 +33,6 @@
 .cartPic {
     width: 10%;
     float: left;
-    clear: both;
 }
 
 .cartContainer ul li h6 {
@@ -58,7 +58,7 @@
 .removeItem {
     float: right;
     width: 15%;
-    margin: 5% 0;
+    margin: 4% 0 1%;
 }
 
 .removeItem:hover{
