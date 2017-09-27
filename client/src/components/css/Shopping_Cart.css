@@ -1,7 +1,7 @@
 .cartContainer {
     overflow: auto;
     text-align: right;
-    min-width: 600px;
+    min-width: 700px;
 }
 
 .cartContainer h1{

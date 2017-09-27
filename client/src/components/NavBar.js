@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { showModal } from '../actions/index'
+import { hideModal } from '../actions/index'
 import Modal from './Modal'
 import './css/NavBar.css'
 import icon from '../images/shopping-icon.png'
@@ -11,10 +11,10 @@ class NavBar extends Component {
             case null:
                 return
             case false:
-                return <div>
+                return <div onClick={() => this.props.dispatch(hideModal())}>
                     <a className='shopcart' href='/shopping_cart'>
                         <img src={icon} alt='cart' /> {this.props.cart.length} item(s)</a>
-                        <p className='userName'>Hello {this.props.auth.first_name}!</p>
+                    <p className='userName'>Hello {this.props.auth.first_name}!</p>
                     <button type='button' className='btn btn-secondary'>
                         <a href='/api/logout'>Logout</a></button>
                 </div>
@@ -25,22 +25,18 @@ class NavBar extends Component {
                 </div>
         }
     }
-
-    clickSignUp(e) {
-        this.props.dispatch(showModal())
-    }
-
     closeModal(e) {
         e.preventDefault()
         this.setState({ showModal: !this.state.showModal })
     }
 
     render() {
-        console.log(this.props)
         return (
-            <div className='nav-position'>
+            <div className='nav-position'
+
+            >
                 <nav className='navbar navbar-expand-lg navbar-light navigation'>
-                    <a className='navbar-brand' style={{ color: '#C2E812' }} href='/'>Vendible</a>
+                    <a className='navbar-brand' style={{ color: '#C2E812' }} href='/' onClick={() => this.props.dispatch(hideModal())}>Vendible</a>
                     <button
                         className='navbar-toggler'
                         type='button'
@@ -53,7 +49,7 @@ class NavBar extends Component {
                     </button>
 
                     <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-                        <ul id='navlink' className='navbar-nav mr-auto'>
+                        <ul id='navlink' className='navbar-nav mr-auto' onClick={() => this.props.dispatch(hideModal())}>
                             <li className='nav-item active'>
                                 <a className='nav-link' href='/'>Home<span className='sr-only'>(current)</span></a></li>
                             <li className='nav-item'><a className='nav-link' href='/'>About</a></li>
@@ -68,5 +64,5 @@ class NavBar extends Component {
         )
     }
 }
-const mapStateToProps = state => ({ auth: state.auth, cart: state.cart})
+const mapStateToProps = state => ({ auth: state.auth, cart: state.cart })
 export default connect(mapStateToProps)(NavBar)

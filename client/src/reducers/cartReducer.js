@@ -1,23 +1,18 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/types'
 
-function cartFunction (state = [], action) {
-    // state = []
+export default function (state = [], action) {
     switch (action.type) {
         case ADD_TO_CART:
-            // console.log(action.payload)
-            return [...state, action.payload]
+            // return state = state.concat([action.payload])
+            return Array.apply([], state, state.push(action.payload))
         case REMOVE_FROM_CART:
-            console.log(action.payload)        
-            return state.splice(action.payload, 1)
+            console.log(action.payload)  
+            console.log(state)
+            
+                // = state.slice(action.payload, 1)   
+            // return state = state.splice(action.payload, 1)   
+            return Array.apply([], state, state.splice(action.payload,1))
         default:
             return state
     }
-}
-
-export default function (state = [1,2,3], action){
-    console.log(state)            
-    // console.log(state.cart)            
-    // console.log(action)            
-
-   return {cart: cartFunction(state, action)}
 }
