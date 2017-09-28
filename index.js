@@ -11,6 +11,13 @@ const express = require('express'),
 require('./models/GoogleUser')
 require('./services/passport')
 
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    next()
+})
+
 mongoose.Promise = global.Promise
 mongoose.connect(keys.mongoURI, {useMongoClient: true})
 mongoose.connection.once('open', () => {
