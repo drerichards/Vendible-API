@@ -35,7 +35,7 @@ class Modal extends Component {
             output =
                 <div>
                     <h3>{item[1]}</h3>
-                    <img style={{ 'width': '40%' }} src={item[0]} alt={item[1]} />
+                    <img style={{ 'width': '25%' }} src={item[0]} alt={item[1]} />
                     <p><strong>Item Details:</strong> {item[3]}</p>
                     <h5>{item[2]}</h5>
                     <button className='btn btn-success' onClick={() => this.clickAddItem()}>Add to Bag</button>
