@@ -6,12 +6,14 @@ const express = require('express'),
     passport = require('passport'),
     bodyParser = require('body-parser'),
     keys = require('./config/keys'),
+    morgan = require('morgan'),
     PORT = process.env.PORT || 5000
 
 require('./models/GoogleUser')
 require('./services/passport')
 
 app.use(cors())
+app.use(morgan('common'))
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
