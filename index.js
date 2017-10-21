@@ -35,7 +35,6 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 require('./routes/authRoutes')(app)
-require('./routes/localUserRoutes')(app)
 require('./routes/inventoryRoutes')(app)
 require('./routes/billingRoutes')(app)
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
