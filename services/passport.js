@@ -2,7 +2,7 @@ const passport = require('passport'),
     GoogleStrategy = require('passport-google-oauth20').Strategy,
     mongoose = require('mongoose'),
     keys = require('../config/keys'),
-    GoogleUser = mongoose.model('google_users')
+    GoogleUser = require('../models/GoogleUser')
 
 passport.serializeUser((user, done) => {
     done(null, user.id)
@@ -15,19 +15,29 @@ passport.deserializeUser((id, done) => {
 })
 
 passport.use(new GoogleStrategy({
-    clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback',
-    proxy: true
-}, async(accessToken, refreshToken, profile, done) => {
-    const existingUser = await GoogleUser.findOne({googleId: profile.id})
-    if (existingUser) {
-        return done(null, existingUser)
-    }
-    const user = await new GoogleUser({
-        googleId: profile.id, 
-        first_name: profile.name.givenName, 
-        last_name: profile.name.familyName,
-        email: profile.emails[0].value}).save()
-    done(null, user)
-}))
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
+      callbackURL: '/auth/google/callback',
+  },
+  (accessToken, refreshToken, profile, cb) => {
+    GoogleUser.findOne({googleId: profile.id}, (err, user) => {
+      if(user) {
+        return cb(null, user)
+      } else {
+        const entry = new GoogleUser()
+
+        entry.googleId = profile.id,
+        entry.first_name = profile.name.givenName,
+        entry.last_name = profile.name.familyName,
+        entry.email = profile.emails[0].value
+
+        entry.save((err, record) => {
+          if(err) {
+            res.send(err)
+          }
+
+          cb(null, record)
+        })
+      }
+  })
+}));
