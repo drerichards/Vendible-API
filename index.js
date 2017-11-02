@@ -12,7 +12,7 @@ const express = require('express'),
 require('./models/GoogleUser')
 require('./services/passport')
 
-app.use(cors())
+app.use(cors({ origin: 'https://stormy-fortress-32507.herokuapp.com'}))
 app.use(morgan('common'))
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")
