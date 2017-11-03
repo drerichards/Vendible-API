@@ -12,7 +12,7 @@ module.exports = app => {
         res.redirect('/')
     })
     app.get('/api/current_user', (req, res) => {
-        res.send(req.user)
+        res.json({user: req.user})
     })
 }
 
