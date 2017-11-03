@@ -11,7 +11,7 @@ module.exports = app => {
         req.logout()
         res.redirect('/')
     })
-    app.get('/api/current_user', (req, res) => {
+    app.get('/api/current_user',  passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
         res.send(req.user)
     })
 }
