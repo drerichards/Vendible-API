@@ -5,7 +5,7 @@ module.exports = app => {
         scope: ['profile', 'email']
     }))
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
-      res.redirect(`https://dry-oasis-35581.herokuapp.com/?user=${req.user}`)
+      res.redirect(`https://dry-oasis-35581.herokuapp.com/?user=${req.user.email}`)
     })
     app.get('/api/logout', (req, res) => {
         req.logout()
