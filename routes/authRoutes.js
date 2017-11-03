@@ -6,6 +6,9 @@ module.exports = app => {
     }))
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l', session: true}), (req, res) => {
       req.session.save(function(err) {
+        if(err) {
+          res.send(err)
+        }
         res.redirect(`https://dry-oasis-35581.herokuapp.com/?user=${req.user.email}`)
      });
     })
