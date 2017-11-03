@@ -4,7 +4,7 @@ module.exports = app => {
     app.get('/auth/google', passport.authenticate('google', {
         scope: ['profile', 'email']
     }))
-    app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
+    app.get('https://stormy-fortress-32507.herokuapp.com/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
       res.redirect('/')
     })
     app.get('/api/logout', (req, res) => {
