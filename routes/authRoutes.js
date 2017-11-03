@@ -11,7 +11,7 @@ module.exports = app => {
         req.logout()
         res.redirect('https://dry-oasis-35581.herokuapp.com/')
     })
-    app.get('/api/current_user',  passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
+    app.get('/api/current_user',  (req, res) => {
         res.send(req.user)
     })
 }
