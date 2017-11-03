@@ -34,6 +34,9 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.get('/test', (req, res) => {
+    res.json({test: 'test'})
+})
 require('./routes/authRoutes')(app)
 require('./routes/inventoryRoutes')(app)
 require('./routes/billingRoutes')(app)
