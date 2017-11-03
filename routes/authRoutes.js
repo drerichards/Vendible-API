@@ -5,7 +5,7 @@ module.exports = app => {
         scope: ['profile', 'email']
     }))
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
-        res.redirect('https://salty-sands-12333.herokuapp.com/')
+        // res.redirect('https://salty-sands-12333.herokuapp.com/')
         res.send( req.user)
     })
     app.get('/api/logout', (req, res) => {
@@ -13,7 +13,7 @@ module.exports = app => {
         res.redirect('https://salty-sands-12333.herokuapp.com/')
     })
     app.get('/api/current_user', (req, res) => {
-        res.json({user: req.user})
+        // res.json({user: req.user})
     })
 }
 
