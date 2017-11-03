@@ -17,7 +17,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback',
+      callbackURL: 'https://stormy-fortress-32507.herokuapp.com',
   },
   (accessToken, refreshToken, profile, cb) => {
     GoogleUser.findOne({googleId: profile.id}, (err, user) => {
