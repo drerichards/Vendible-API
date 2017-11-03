@@ -12,6 +12,6 @@ module.exports = app => {
         res.redirect('https://dry-oasis-35581.herokuapp.com/')
     })
     app.get('/api/current_user',  (req, res) => {
-        res.send(req.user)
+        res.json(req.user)
     })
 }
