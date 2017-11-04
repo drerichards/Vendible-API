@@ -5,7 +5,7 @@ module.exports = app => {
         scope: ['profile', 'email']
     }))
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
-        res.redirect('https://salty-sands-12333.herokuapp.com/')
+        res.redirect('https://salty-sands-12333.herokuapp.com/'+req.user.first_name)
         // res.redirect('/')
         // console.log(req.user)
         // res.send( req.user)
