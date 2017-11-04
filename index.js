@@ -12,7 +12,7 @@ const express = require('express'),
 require('./models/GoogleUser')
 require('./services/passport')
 
-app.use(cors({ origin: 'https://salty-sands-12333.herokuapp.com'}))
+app.use(cors({ origin: 'https://vendible.netlify.com'}))
 app.use(morgan('common'))
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")

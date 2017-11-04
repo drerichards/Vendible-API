@@ -5,16 +5,16 @@ module.exports = app => {
         scope: ['profile', 'email']
     }))
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
-        // res.redirect('https://salty-sands-12333.herokuapp.com/')
-        res.redirect(`https://salty-sands-12333.herokuapp.com/post=${req.user.first_name}`)
+        res.redirect('https://vendible.netlify.com')
+        // res.redirect(`https://salty-sands-12333.herokuapp.com/post=${req.user.first_name}`)
         // res.redirect('/')
         // console.log(req.user)
         // res.send( req.user)
     })
     app.get('/api/logout', (req, res) => {
         req.logout()
-        // res.redirect('/')
-        res.redirect('https://salty-sands-12333.herokuapp.com/')
+        // res.redirect('/')https://vendible.netlify.com
+        res.redirect('https://vendible.netlify.com')
     })
     app.get('/api/current_user', (req, res) => {
         // res.json({user: req.user})
