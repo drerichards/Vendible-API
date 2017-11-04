@@ -6,8 +6,8 @@ module.exports = app => {
     }))
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
         // res.redirect('https://vendible.netlify.com')
-        res.redirect(`/post=${req.user.first_name}`)
-        // res.redirect('/')
+        // res.redirect(`/post=${req.user.first_name}`)
+        res.redirect('/')
         // console.log(req.user)
         // res.send( req.user)
     })
