@@ -11,7 +11,4 @@ module.exports = app => {
         req.logout()
         res.redirect('https://salty-sands-12333.herokuapp.com/')
     })
-    app.get('/api/current_user',  (req, res) => {
-        res.json({msg: 'yup', user: req.session, t: '3'})
-    })
 }
