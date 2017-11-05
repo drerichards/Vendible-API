@@ -9,6 +9,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((id, done) => {
+  console.log(id);
     GoogleUser.findById(id).then(user => {
             done(null, user)
         })
@@ -18,25 +19,26 @@ passport.use(new GoogleStrategy({
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',
-      proxy: true
   },
-  (accessToken, refreshToken, profile, done) => {
+  (accessToken, refreshToken, profile, cb) => {
     GoogleUser.findOne({googleId: profile.id}, (err, user) => {
       if(user) {
-        return done(null, user)
+        return cb(null, user)
       } else {
         const entry = new GoogleUser()
+
         entry.googleId = profile.id,
         entry.first_name = profile.name.givenName,
         entry.last_name = profile.name.familyName,
         entry.email = profile.emails[0].value
+
         entry.save((err, record) => {
           if(err) {
             res.send(err)
           }
 
-          done(null, record)
+          cb(null, record)
         })
       }
   })
-}))
+}));
