@@ -18,26 +18,25 @@ passport.use(new GoogleStrategy({
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',
+      proxy: true
   },
-  (accessToken, refreshToken, profile, cb) => {
+  (accessToken, refreshToken, profile, done) => {
     GoogleUser.findOne({googleId: profile.id}, (err, user) => {
       if(user) {
-        return cb(null, user)
+        return done(null, user)
       } else {
         const entry = new GoogleUser()
-
         entry.googleId = profile.id,
         entry.first_name = profile.name.givenName,
         entry.last_name = profile.name.familyName,
         entry.email = profile.emails[0].value
-
         entry.save((err, record) => {
           if(err) {
             res.send(err)
           }
 
-          cb(null, record)
+          done(null, record)
         })
       }
   })
-}));
+}))

@@ -5,6 +5,8 @@ const express = require('express'),
     cookieSession = require('cookie-session'),
     passport = require('passport'),
     bodyParser = require('body-parser'),
+    pathParser = require('path-parser'),
+    {URL} = require('url',)
     keys = require('./config/keys'),
     morgan = require('morgan'),
     PORT = process.env.PORT || 5000
@@ -37,6 +39,13 @@ app.use(passport.session())
 require('./routes/authRoutes')(app)
 require('./routes/inventoryRoutes')(app)
 require('./routes/billingRoutes')(app)
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static('build'))
+    const path = require('path')
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+    })
+} 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 
 module.exports = {app}

@@ -4,7 +4,7 @@ module.exports = app => {
     app.get('/auth/google', passport.authenticate('google', {
         scope: ['profile', 'email']
     }))
-    app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l' }), (req, res) => {
+    app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
         // res.redirect('https://vendible.netlify.com')
         // res.redirect(`/post=${req.user.first_name}`)
         res.redirect('/')
@@ -13,8 +13,8 @@ module.exports = app => {
     })
     app.get('/api/logout', (req, res) => {
         req.logout()
-        // res.redirect('/')https://vendible.netlify.com
-        res.redirect('https://vendible.netlify.com')
+        res.redirect('/')
+        // res.redirect('https://vendible.netlify.com')
     })
     app.get('/api/current_user', (req, res) => {
         // res.json({user: req.user})
