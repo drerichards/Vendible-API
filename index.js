@@ -2,6 +2,7 @@ const express = require('express'),
     cors = require('cors'),
     app = express(),
     mongoose = require('mongoose'),
+    session = require('express-session'),
     cookieSession = require('cookie-session'),
     passport = require('passport'),
     bodyParser = require('body-parser'),
@@ -26,11 +27,16 @@ mongoose.connection.once('open', () => {
         console.log('Mongo Connection Opened!')
     }).on('error', (error) => console.warn('Warning', error))
 
+app.use(session({
+  secret: 'something something',
+  resave: false,
+  saveUninitialized: false
+}));
 app.use(bodyParser.json())
-app.use(cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
-}))
+// app.use(cookieSession({
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey]
+// }))
 app.use(passport.initialize())
 app.use(passport.session())
 
