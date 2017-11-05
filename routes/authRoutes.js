@@ -5,7 +5,7 @@ module.exports = app => {
         scope: ['profile', 'email']
     }))
     app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
-        // res.redirect('https://vendible.netlify.com')
+        res.redirect('https://vendible.netlify.com')
         // res.redirect(`/post=${req.user.first_name}`)
         res.redirect('/')
         // console.log(req.user)
