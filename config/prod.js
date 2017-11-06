@@ -1,8 +1,8 @@
 module.exports = {
-  googleClientID: process.env.GOOGLE_CLIENT_ID,
-  googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  mongoURI: process.env.MONGO_URI,
-  cookieKey: process.env.COOKIE_KEY,
-  stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-  stripeSecretKey: process.env.STRIPE_SECRET_KEY
+  googleClientID: '777502287478-q985306nqk8hpvihor13toedrie0sea1.apps.googleusercontent.com',
+  googleClientSecret: 'fvgBfxlnA-DNw0cpe9q7hglZ',
+  mongoURI: 'mongodb://andredev:hyetsb@ds129394.mlab.com:29394/vendible-dev',
+  cookieKey: 'p248oweryGEHWFJDK55o2i4tyhwefI3RUEWFHoqufahsczxlougrp2we',
+  stripePublishableKey: 'pk_test_72k7afMyvAZApegkYfgmOPMp',
+  stripeSecretKey: 'sk_test_TBTasApolFZT7t1lAHi0S2tB'
 }
