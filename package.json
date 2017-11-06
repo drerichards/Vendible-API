@@ -1,5 +1,5 @@
 {
-  "name": "vendible",
+  "name": "vendible-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,21 +9,18 @@
   },
   "scripts": {
     "start": "nodemon index.js",
-    "vendible": "nodemon index.js",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run vendible\" \"npm run client\"",
     "test": "nodemon --exec mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drerichards/Vendible-API.git"
+    "url": "git+https://github.com/drerichards/vendible-server.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/drerichards/Vendible-API/issues"
+    "url": "https://github.com/drerichards/vendible-server/issues"
   },
-  "homepage": "https://github.com/drerichards/Vendible-API#readme",
+  "homepage": "https://github.com/drerichards/vendible-server#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "chai": "^4.1.2",
