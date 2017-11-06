@@ -9,7 +9,7 @@ module.exports = app => {
     })
     app.get('/api/logout', (req, res) => {
         req.logout()
-        res.redirect('https://salty-sands-12333.herokuapp.com/')
+        res.redirect('https://salty-sands-12333.herokuapp.com')
     })
     app.get('/api/current_user',  (req, res) => {
         res.json({msg: 'yup', user: req.session, t: '3'})
