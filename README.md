@@ -1,1 +1,1 @@
-# Vendible-API
+# vendible-server
