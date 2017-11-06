@@ -5,10 +5,10 @@ module.exports = app => {
         scope: ['profile', 'email']
     }))
     app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/l', session: false}), (req, res) => {
-        res.redirect(`https://salty-sands-12333.herokuapp.com/${req.user._id}/${req.user.email}`) 
+        res.redirect(`https://vendible.herokuapp.com/${req.user._id}/${req.user.email}`) 
     })
     app.get('/api/logout', (req, res) => {
         req.logout()
-        res.redirect('https://salty-sands-12333.herokuapp.com')
+        res.redirect('https://vendible.herokuapp.com')
     })
 }
