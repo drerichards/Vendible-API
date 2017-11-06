@@ -28,7 +28,7 @@ mongoose.connection.once('open', () => {
     }).on('error', (error) => console.warn('Warning', error))
 
 app.use(session({
-  secret: keys.cookieKey,
+  secret: 'something something',
   resave: false,
   saveUninitialized: false
 }));
