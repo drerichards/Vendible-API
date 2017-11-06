@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
 })
 
 mongoose.Promise = global.Promise
-mongoose.connect(keys.mongoURI, {useMongoClient: true})
+mongoose.connect('mongodb://andredev:hyetsb@ds129394.mlab.com:29394/vendible-dev', {useMongoClient: true})
 mongoose.connection.once('open', () => {
         console.log('Mongo Connection Opened!')
     }).on('error', (error) => console.warn('Warning', error))
@@ -33,6 +33,10 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(bodyParser.json())
+// app.use(cookieSession({
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey]
+// }))
 app.use(passport.initialize())
 app.use(passport.session())
 
