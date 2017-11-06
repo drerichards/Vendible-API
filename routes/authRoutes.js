@@ -11,4 +11,7 @@ module.exports = app => {
         req.logout()
         res.redirect('https://salty-sands-12333.herokuapp.com/')
     })
+    app.get('/test', (req, res) => {
+        console.log(req.user)
+    })
 }
